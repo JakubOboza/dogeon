@@ -13,7 +13,7 @@ import scala.util.parsing.combinator._
 
 class DogeonParser extends JavaTokenParsers {
 
-  def value  : Parser[Any]  =  obj | arr | deguotedString | floatingPointNumber ^^ (_.toDouble) | "null" ^^ (n => null)| "true" ^^ (t => true) | "false" ^^ (f => false)
+  def value  : Parser[Any]  =  obj | arr | deguotedString | floatingPointNumber ^^ (_.toDouble) | "nullish" ^^ (n => null)| "nottrue" ^^ (p => false) | "notfalse" ^^ (p => true)
 
   def obj    : Parser[Map[String,Any]]  =  "such"~repsep(member, "wow")~"wow" ^^ { case "such"~ms~"wow" => Map() ++ ms}
 

@@ -34,6 +34,20 @@ class DogeonSpec extends Specification {
       dogeMap("foo") === "bar"
     }
 
+    "much nottrue so notfalse" in {
+      val dogeString: String = "such \"foo\" is so nottrue next notfalse next nullish many wow"
+
+      val result = Dogeon.muchWow(dogeString)
+
+      val dogeMap: Map[String, List[Any]] = result.asInstanceOf[Map[String, List[Any]]]
+
+      val maybeDogeList : List[Any]  = dogeMap("foo")
+
+      maybeDogeList(0).asInstanceOf[Boolean] === false
+      maybeDogeList(1).asInstanceOf[Boolean] === true
+      maybeDogeList(2) === null
+    }
+
   }
 
 }
